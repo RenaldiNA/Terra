@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/AppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="start"
+            android:gravity="start"
+            android:src="@drawable/logobtpns"
+            android:layout_marginLeft="15dp"/>
+
+        <Button
+            android:id="@+id/btnLogout"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:layout_marginLeft="180dp"
+            android:layout_marginTop="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/md_orange_500" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/AppBar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/rowMenu1"
+         />
+
+    <LinearLayout
+        android:id="@+id/rowMenu1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/AppBar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <Button
+            android:id="@+id/buttonSetorTunai"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_history"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:drawableTop="@drawable/save_money"
+            android:text="Setor Tunai" />
+
+        <Button
+            android:id="@+id/buttonTarikTunai"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_history"
+            android:drawableTop="@drawable/loan"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:text="Tarik Tunai" />
+
+        <Button
+            android:id="@+id/buttonBayarAngsuran"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_history"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:drawableTop="@drawable/payment"
+            android:text="Bayar Angsuran" />
+
+<!--        <Button-->
+<!--            android:id="@+id/buttonCicilanBaru"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/card_history"-->
+<!--            android:drawableTop="@drawable/bill"-->
+<!--            android:padding="5dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:text="Cicilan Baru" />-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rowMenu2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/rowMenu1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+
+        <Button
+            android:id="@+id/buttonPinjamanNasabah"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_history"
+            android:drawableTop="@drawable/personal_data"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:text="Pinjaman Nasabah" />
+
+        <Button
+            android:id="@+id/buttonTabunganNasabah"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_history"
+            android:drawableTop="@drawable/tabungan"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:text="Tabungan Nasabah" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bottom_bar"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rowMenu2"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="#DemiNiatBaik"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="#bankirpemberdaya"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

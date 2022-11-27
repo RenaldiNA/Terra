@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--    Button ketika di tekan-->
+    <item android:state_pressed="true" android:drawable="@drawable/button_hover_1">
+        <color android:color="@color/md_orange_700"/>
+    </item>
+
+    <item android:drawable="@drawable/custom_button" />
+</selector>
