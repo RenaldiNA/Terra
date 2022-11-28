@@ -1,6 +1,7 @@
 package com.example.terraproject.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -32,6 +33,7 @@ public class TabunganActivity extends AppCompatActivity {
     SearchView searchView;
     ArrayList<HashMap<String, String>> arrayList;
     SimpleAdapter adapter;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class TabunganActivity extends AppCompatActivity {
         //binding variabel
         listView = findViewById(R.id.listViewLayoutTabungan);
         searchView = findViewById(R.id.searchViewTabungan);
+//        swipeRefreshLayout = findViewById(R.id.refreshLayout);
         searchView.onActionViewExpanded();
 
         arrayList = new ArrayList<>();
@@ -64,7 +67,6 @@ public class TabunganActivity extends AppCompatActivity {
             }
         });
 
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -77,6 +79,8 @@ public class TabunganActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
     }
 
     // ketika navigation sudah diset, kita buat function nya
