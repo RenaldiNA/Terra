@@ -1,4 +1,4 @@
-package com.example.terraproject;
+package com.example.terraproject.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,13 +14,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.terraproject.R;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -30,13 +31,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
-
 public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     EditText etEmail, etPassword;
     private ProgressDialog progressDialog;
-//    String email, password;
+    private static final Object TAG = "test";
+    RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin    = findViewById(R.id.buttonLogin);
         etEmail     = findViewById(R.id.editTextEmail);
         etPassword  = findViewById(R.id.editTextPassword);
+        queue = Volley.newRequestQueue(this);
 
         // cek sudah dapat data dari sharedpreferences atau belum
         isLogin();
@@ -59,8 +60,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (email.isEmpty() || password.isEmpty()){
                     showSnackbar(view , "Email/Password harus diisi");
-
-
                 } else {
                     sendLogin(email, password);
                 }
@@ -106,43 +105,42 @@ public class LoginActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
 //        081283241341
         // Request a string response from the provided URL.
-        String url = "http://192.168.1.9:8080/login";
+        String url = "http://192.168.1.9:8081/client/login";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 response -> {
                     try {
                         JSONObject jsonObject = new JSONObject(response);
-                        boolean status = jsonObject.getBoolean("status");
-
-                        JSONObject payload = jsonObject.getJSONObject("payload");
-                        String nama = payload.getString("nama");
+                        String nama = jsonObject.getString("nama");
+                        String nikKtp = jsonObject.getString("nikKtp");
+                        String nikKaryawan = jsonObject.getString("nikKaryawan");
 
                         Log.d("cek status", "isi response  : " + response);
-                        Log.d("cek status", "isi status : " + status);
-                        Log.d("cek status", "isi data  : " + payload);
+                        Log.d("cek status", "isi data  : " + jsonObject);
                         Log.d("cek status", "isi nama  : " + nama);
+                        Log.d("cek status", "isi nikKtp  : " + nikKtp);
+                        Log.d("cek status", "isi nikKaryawan  : " + nikKaryawan);
 
                         if(progressDialog.isShowing()) progressDialog.dismiss();
                         Toast.makeText(getApplicationContext(), "Login Berhasil", Toast.LENGTH_SHORT).show();
 
-                        if (status) {
-                            Log.d("STATUS_LOGIN", "login success ");
-
                             SharedPreferences.Editor editor = getSharedPreferences("session", MODE_PRIVATE).edit();
                             editor.putString("nama", nama);
+                            editor.putString("nikKtp" , nikKtp);
+                            editor.putString("nikKaryawan" , nikKaryawan);
                             editor.commit();
 
                             //jika sukses ke halaman main
                             Intent intent = new Intent(this, MainActivity.class);
                             startActivity(intent);
 
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Login Gagal", Toast.LENGTH_SHORT).show();
-                            Log.d("STATUS_LOGIN", "login failed ");
-                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }, error -> Log.d("STATUS_LOGIN", "tidak dapat response")
+                }, error -> {
+                            if(progressDialog.isShowing()) progressDialog.dismiss();
+                            Toast.makeText(getApplicationContext(), "Login Gagal", Toast.LENGTH_SHORT).show();
+                            Log.d("STATUS_LOGIN", "tidak dapat response");
+        }
         ) {
             @Override
             protected Map<String, String> getParams() {

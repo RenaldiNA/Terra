@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.SetorActivity">
+    tools:context=".activities.AngsuranActivity">
 
     <LinearLayout
-        android:id="@+id/logoSetorTunai"
+        android:id="@+id/logoTarikTunai"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -23,7 +23,7 @@
             android:layout_margin="10dp"
             android:background="@drawable/card_history"
             android:padding="20dp"
-            android:src="@drawable/save_money" />
+            android:src="@drawable/payment" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="Setor Tunai"
+            android:text="Angsuran"
             android:textSize="25dp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -45,11 +45,11 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/custom_edittext"
-        app:layout_constraintTop_toBottomOf="@id/logoSetorTunai"
+        app:layout_constraintTop_toBottomOf="@id/logoTarikTunai"
         tools:ignore="MissingConstraints">
 
         <EditText
-            android:id="@+id/editTextNoKTPSetor"
+            android:id="@+id/editTextNoPembiayaan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -57,10 +57,10 @@
             android:layout_marginLeft="20dp"
             android:padding="15sp"
             android:background="@drawable/edittext_shadow"
-            android:hint="Input No Rekening"/>
+            android:hint="Input No Pembiayaan"/>
 
         <EditText
-            android:id="@+id/editTextInputSetorSaldo"
+            android:id="@+id/editTextInputAngsuran"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -74,7 +74,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/buttonSetorSaldo"
+        android:id="@+id/buttonKirimAngsuran"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Kirim"

@@ -1,4 +1,4 @@
-package com.example.terraproject;
+package com.example.terraproject.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,12 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
+import com.example.terraproject.R;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -35,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnSetor = findViewById(R.id.buttonSetorTunai);
         Button btnTarik = findViewById(R.id.buttonTarikTunai);
-//        Button btnCicilan = findViewById(R.id.buttonCicilanBaru);
         Button btnBayar = findViewById(R.id.buttonBayarAngsuran);
         Button btnPinjaman = findViewById(R.id.buttonPinjamanNasabah);
         Button btnTabungan = findViewById(R.id.buttonTabunganNasabah);
@@ -71,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
             // fungsi menuju ke tabungan nasabah
             Intent tabungan = new Intent(getApplicationContext(), TabunganActivity.class);
             startActivity(tabungan); // jalankan activity ketika sudah di inialisasi
+        });
+
+        btnBayar.setOnClickListener(view -> {
+            // fungsi menuju ke tabungan nasabah
+            Intent angsuran = new Intent(getApplicationContext(), AngsuranActivity.class);
+            startActivity(angsuran); // jalankan activity ketika sudah di inialisasi
         });
 
         btnLogout.setOnClickListener(view -> {

@@ -40,4 +40,6 @@ dependencies {
     implementation 'com.github.f0ris.sweetalert:library:1.6.2'
     //Volley
     implementation 'com.android.volley:volley:1.2.1'
+    //cardView
+    implementation "androidx.cardview:cardview:1.0.0"
 }

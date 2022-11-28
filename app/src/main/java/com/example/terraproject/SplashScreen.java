@@ -10,6 +10,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.terraproject.activities.LoginActivity;
+
 public class SplashScreen extends AppCompatActivity {
     Animation animation;
 
